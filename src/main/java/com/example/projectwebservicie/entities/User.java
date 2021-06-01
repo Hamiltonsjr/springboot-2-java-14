@@ -2,12 +2,21 @@ package com.example.projectwebservicie.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1l;
 
+    @Id // Passando id para o JPA
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //Como a chave é numérica ele vai ser auto incrementada no BD
     private Long id;
+
     private String name;
     private String email;
     private String phone;
