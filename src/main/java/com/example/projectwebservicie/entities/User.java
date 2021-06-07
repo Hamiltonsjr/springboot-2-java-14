@@ -1,5 +1,7 @@
 package com.example.projectwebservicie.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,9 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
-    // posso mapear o usuario e ver os pedidos associado a ele
+    // posso mapear o usuario e ver os pedidos associado a ele.
     @OneToMany(mappedBy = "client") //nome do atribuito na classe Order.
+    @JsonIgnore // Para resolver o problema do loping.
     private List<Order> orders = new ArrayList<>();
 
     public User(){
